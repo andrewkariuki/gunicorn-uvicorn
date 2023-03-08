@@ -41,8 +41,8 @@ USER $USER
 ADD --chown=$USER:0 . $WORK_DIR/
 
 RUN \
-    chmod +x ./start.sh; \
-    chmod +x ./start-reload.sh; \
+    chmod +x ./start-dev.sh; \
+    chmod +x ./start-prod.sh; \
     poetry config virtualenvs.create false
 
 CMD ["./start-dev.sh"]

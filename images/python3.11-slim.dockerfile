@@ -38,11 +38,12 @@ ENV PYTHONPATH=$WORK_DIR
 WORKDIR $WORK_DIR
 USER $USER
 
+ADD --chown=$USER:0 ./start-dev.sh ./gunicorn_conf.py ./start-prod.sh $WORK_DIR/
 ADD --chown=$USER:0 . $WORK_DIR/
 
 RUN \
-    chmod +x ./start.sh; \
-    chmod +x ./start-reload.sh; \
+    chmod +x ./start-dev.sh; \
+    chmod +x ./start-prod.sh; \
     poetry config virtualenvs.create false
 
 CMD ["./start-dev.sh"]
