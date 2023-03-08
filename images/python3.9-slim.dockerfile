@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.9-slim
 
 ARG \
     WORK_DIR=/srv/app \
@@ -24,20 +24,21 @@ RUN \
     apt-get install -y --no-install-recommends curl; \
     curl -sSL https://install.python-poetry.org | POETRY_HOME=${POETRY_HOME} python;\
     cd /usr/local/bin && ln -s /opt/poetry/bin/poetry; \
-    groupadd -rg $USER_GID $USER; \
-    useradd -mru $USER_UID -g $USER_GID $USER; \
-    mkdir -p -m0770 $WORK_DIR $WORK_DIR/logs $WORK_DIR/data; \
-    chown -R $USER:0 $WORK_DIR $WORK_DIR/logs $WORK_DIR/data $POETRY_HOME /usr/local /tmp/requirements.txt; \
     apt-get -y remove curl; \
     apt-get -y autoremove; \
     apt-get -y clean; \
     apt-get update; \
-    rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
+    rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb; \
+    groupadd -rg $USER_GID $USER; \
+    useradd -mru $USER_UID -g $USER_GID $USER; \
+    mkdir -p -m0770 $WORK_DIR $WORK_DIR/logs $WORK_DIR/data; \
+    chown -R $USER:0 $WORK_DIR $WORK_DIR/logs $WORK_DIR/data $POETRY_HOME /usr/local /tmp/requirements.txt
 
 ENV PYTHONPATH=$WORK_DIR
 WORKDIR $WORK_DIR
 USER $USER
 
+ADD --chown=$USER:0 ./start.sh ./gunicorn_conf.py ./start-reload.sh $WORK_DIR/
 ADD --chown=$USER:0 . $WORK_DIR/
 
 RUN \
