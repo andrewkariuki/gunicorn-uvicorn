@@ -38,10 +38,7 @@ ENV PYTHONPATH=$WORK_DIR
 WORKDIR $WORK_DIR
 USER $USER
 
-ADD --chown=$USER:0 ./start.sh ./gunicorn_conf.py ./start-reload.sh $WORK_DIR/
-ADD --chown=$USER:0 . $WORK_DIR/
 
-ADD --chown=$USER:0 ./start-dev.sh ./gunicorn_conf.py ./start-prod.sh $WORK_DIR/
 ADD --chown=$USER:0 . $WORK_DIR/
 
 RUN \
