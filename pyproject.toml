@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "gunicorn-uvicorn"
+version = "0.0.1"
+description = "Python docker images for running ASGI and WSGI web server application with Gunicorn and Uvicorn"
+authors = ["Andrew Kariuki <andrew.o.kariuki@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
