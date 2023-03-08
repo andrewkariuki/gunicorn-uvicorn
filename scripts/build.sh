@@ -9,4 +9,4 @@ if [ "$NAME" == "latest" ]; then
     DOCKERFILE="python3.11"
 fi
 
-docker build -t "$use_tag" --file "./docker-images/${DOCKERFILE}.dockerfile" "./docker-images/"
+docker build -t "$use_tag" --file "./images/${DOCKERFILE}.dockerfile" "./images/"

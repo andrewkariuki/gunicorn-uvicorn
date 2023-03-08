@@ -4,11 +4,11 @@ import sys
 
 environments = [
     {"NAME": "latest", "PYTHON_VERSION": "3.11"},
-    {"NAME": "python3.11", "PYTHON_VERSION": "3.11"},
     {"NAME": "python3.10", "PYTHON_VERSION": "3.10"},
-    {"NAME": "python3.9", "PYTHON_VERSION": "3.9"},
-    {"NAME": "python3.11-slim", "PYTHON_VERSION": "3.11"},
     {"NAME": "python3.10-slim", "PYTHON_VERSION": "3.10"},
+    {"NAME": "python3.11", "PYTHON_VERSION": "3.11"},
+    {"NAME": "python3.11-slim", "PYTHON_VERSION": "3.11"},
+    {"NAME": "python3.9", "PYTHON_VERSION": "3.9"},
     {"NAME": "python3.9-slim", "PYTHON_VERSION": "3.9"},
 ]
 
